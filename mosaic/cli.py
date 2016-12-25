@@ -19,7 +19,7 @@ def main():
     build = subparsers.add_parser('build')
     build.add_argument(dest='image',
                        help='path to the image to make a mosaic from')
-    build.add_argument('-o', dest='output', help='output path')
+    build.add_argument('-o', dest='output', help='output path', required=True)
     build.add_argument('--data-dir', dest='data_dir', default='./data/',
                        help='defaults to ./data/')
 
