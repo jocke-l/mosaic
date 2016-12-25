@@ -1,5 +1,6 @@
 import argparse
 
+from mosaic import builder
 from mosaic import collector
 
 
@@ -18,12 +19,17 @@ def main():
     build = subparsers.add_parser('build')
     build.add_argument(dest='image',
                        help='path to the image to make a mosaic from')
+    build.add_argument('-o', dest='output', help='output path')
     build.add_argument('--data-dir', dest='data_dir', default='./data/',
                        help='defaults to ./data/')
 
     args = parser.parse_args()
     if args.subparser == 'build':
-        pass
+        builder.build(
+            image=args.image,
+            data_dir=args.data_dir,
+            output=args.output
+        )
     elif args.subparser == 'collect':
         collector.collect(
             keywords=args.keywords.split(','),
