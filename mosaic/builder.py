@@ -44,7 +44,6 @@ def build(image, data_dir, output):
 
             tile_filename = get_best_matching_tile(tiles, mean_color)
             tile = Image.open(os.path.join(data_dir, tile_filename))
-            tile.resize((20, 20))
-            new_img.paste(tile, (x, y))
+            new_img.paste(tile.resize((20, 20)), (x, y))
 
     new_img.save(output)
